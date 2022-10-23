@@ -6,7 +6,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Welcome to client!</title>
+        <title>Welcome to gc-client!</title>
       </Head>
       <main className="app">
         <Component {...pageProps} />

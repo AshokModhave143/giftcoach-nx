@@ -1,7 +1,7 @@
 {
-  "name": "client",
+  "name": "gc-client",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/client",
+  "sourceRoot": "apps/gc-client",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,12 +9,12 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/client",
-        "outputPath": "dist/apps/client"
+        "root": "apps/gc-client",
+        "outputPath": "dist/apps/gc-client"
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/client"
+          "outputPath": "apps/gc-client"
         },
         "production": {}
       }
@@ -23,16 +23,16 @@
       "executor": "@nrwl/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "client:build",
+        "buildTarget": "gc-client:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "client:build:development",
+          "buildTarget": "gc-client:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "client:build:production",
+          "buildTarget": "gc-client:build:production",
           "dev": false
         }
       }
@@ -40,14 +40,14 @@
     "export": {
       "executor": "@nrwl/next:export",
       "options": {
-        "buildTarget": "client:build:production"
+        "buildTarget": "gc-client:build:production"
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/client/jest.config.ts",
+        "jestConfig": "apps/gc-client/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -55,7 +55,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/client/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/gc-client/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },

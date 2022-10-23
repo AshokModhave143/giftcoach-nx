@@ -24,7 +24,13 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+        "react/jsx-curly-brace-presence": ["error", "never"],
+        "react/self-closing-comp": [
+          "error",
+          { "component": true, "html": true }
+        ]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

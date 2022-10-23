@@ -1,0 +1,4 @@
+.next
+dist/
+generated/
+node_modules/
