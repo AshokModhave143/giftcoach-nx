@@ -62,6 +62,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-jsx-a11y", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:6.6.1"],\
             ["eslint-plugin-react", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:7.31.8"],\
             ["eslint-plugin-react-hooks", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:4.6.0"],\
+            ["husky", "npm:8.0.1"],\
             ["jest", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:28.1.1"],\
             ["jest-environment-jsdom", "npm:28.1.1"],\
             ["next", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:12.3.1"],\
@@ -10754,6 +10755,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-jsx-a11y", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:6.6.1"],\
             ["eslint-plugin-react", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:7.31.8"],\
             ["eslint-plugin-react-hooks", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:4.6.0"],\
+            ["husky", "npm:8.0.1"],\
             ["jest", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:28.1.1"],\
             ["jest-environment-jsdom", "npm:28.1.1"],\
             ["next", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:12.3.1"],\
@@ -11300,6 +11302,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["humanize-ms", "npm:1.2.1"],\
             ["ms", "npm:2.1.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["husky", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/husky-npm-8.0.1-85fede8470-943a73a13d.zip/node_modules/husky/",\
+          "packageDependencies": [\
+            ["husky", "npm:8.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
