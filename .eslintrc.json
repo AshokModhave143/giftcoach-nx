@@ -25,17 +25,24 @@
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
       "rules": {
-        "react/jsx-curly-brace-presence": ["error", "never"],
-        "react/self-closing-comp": [
-          "error",
-          { "component": true, "html": true }
-        ]
+        "typescript-eslint/no-empty-interface": "off"
       }
     },
     {
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nrwl/nx/javascript"],
       "rules": {}
+    },
+
+    {
+      "files": ["*.tsx", "*.jsx"],
+      "rules": {
+        "react/jsx-curly-brace-presence": ["error", "never"],
+        "react/self-closing-comp": [
+          "error",
+          { "component": true, "html": true }
+        ]
+      }
     }
   ]
 }

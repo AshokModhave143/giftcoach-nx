@@ -10,9 +10,10 @@
     "!**/dist"
   ],
   "scripts": {
-    "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test"
+    "build": "nx run-many --all --target=build --parallel",
+    "lint": "nx run-many --all --target=lint --parallel",
+    "start": "nx serve gc-client",
+    "test": "nx run-many --all --target=test --parallel"
   },
   "dependencies": {
     "@nrwl/next": "15.0.1",
@@ -27,6 +28,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.19.6",
     "@nrwl/cli": "15.0.1",
     "@nrwl/cypress": "15.0.1",
     "@nrwl/eslint-plugin-nx": "15.0.1",
@@ -37,6 +39,7 @@
     "@nrwl/web": "15.0.1",
     "@nrwl/workspace": "15.0.1",
     "@testing-library/react": "13.4.0",
+    "@types/babel__core": "^7",
     "@types/jest": "28.1.1",
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",

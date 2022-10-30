@@ -40,7 +40,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.0.1, @babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.15.0, @babel/core@npm:^7.18.5":
+"@babel/core@npm:^7.0.1, @babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.15.0, @babel/core@npm:^7.18.5, @babel/core@npm:^7.19.6":
   version: 7.19.6
   resolution: "@babel/core@npm:7.19.6"
   dependencies:
@@ -2982,7 +2982,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/babel__core@npm:^7.1.14":
+"@types/babel__core@npm:^7, @types/babel__core@npm:^7.1.14":
   version: 7.1.19
   resolution: "@types/babel__core@npm:7.1.19"
   dependencies:
@@ -7583,6 +7583,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "giftcoach@workspace:."
   dependencies:
+    "@babel/core": ^7.19.6
     "@nrwl/cli": 15.0.1
     "@nrwl/cypress": 15.0.1
     "@nrwl/eslint-plugin-nx": 15.0.1
@@ -7594,6 +7595,7 @@ __metadata:
     "@nrwl/web": 15.0.1
     "@nrwl/workspace": 15.0.1
     "@testing-library/react": 13.4.0
+    "@types/babel__core": ^7
     "@types/jest": 28.1.1
     "@types/node": 18.7.18
     "@types/react": 18.0.20
