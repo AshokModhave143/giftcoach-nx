@@ -25,6 +25,8 @@
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.11",
     "@nrwl/next": "15.0.1",
+    "@tanstack/react-query": "^4.13.4",
+    "@tanstack/react-query-devtools": "^4.13.4",
     "@yarnpkg/sdks": "^3.0.0-rc.27",
     "core-js": "^3.6.5",
     "next": "12.3.1",

@@ -1,11 +1,18 @@
 import { AppProps } from 'next/app';
 import { CacheProvider, EmotionCache } from '@emotion/react';
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 import './global.css';
 import { Layout } from '../components/Layout';
 import createEmotionCache from '../theme/createEmotionCache';
 import Head from 'next/head';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from '../theme/theme';
+import React, { useState } from 'react';
+import { ReactQueryDevToolsComponent } from '../components/ReactQueryDevTools';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -19,6 +26,8 @@ function GiftCoachApp({
   pageProps,
   emotionCache = clientSideEmotionCache,
 }: GiftCoachApp) {
+  const [queryClient] = useState(() => new QueryClient());
+
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -26,9 +35,14 @@ function GiftCoachApp({
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <QueryClientProvider client={queryClient}>
+          <ReactQueryDevToolsComponent />
+          <Hydrate state={pageProps.dehydratedState}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </Hydrate>
+        </QueryClientProvider>
       </ThemeProvider>
     </CacheProvider>
   );
