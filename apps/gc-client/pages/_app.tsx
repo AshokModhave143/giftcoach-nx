@@ -1,18 +1,13 @@
 import { AppProps } from 'next/app';
-import Head from 'next/head';
-import './styles.css';
+import './global.css';
+import { Layout } from '../components/Layout';
 
-function CustomApp({ Component, pageProps }: AppProps) {
+function GiftCoachApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Head>
-        <title>Welcome to gc-client!</title>
-      </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 }
 
-export default CustomApp;
+export default GiftCoachApp;

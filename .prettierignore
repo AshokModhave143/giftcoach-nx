@@ -1,5 +1,8 @@
 # Add files here to ignore them from prettier formatting
 .next/
+.pnp.cjs
+.pnp.loader.mjs
 /coverage
 /dist
 /coverage
+public/
