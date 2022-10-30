@@ -9,7 +9,11 @@ const fontWeights = [
   fontWeightRegular,
   fontWeightBold,
 ];
+const fontFamily = theme.typography.fontFamily
+  .split(',')[0]
+  .trim()
+  .replace(/"/g, '');
 
-export const fontHref = `https://fonts.googleapis.com/css?family=${
-  theme.typography.fontFamily
-}:${fontWeights.join(',')}&display=swap`;
+export const fontHref = `https://fonts.googleapis.com/css?family=${fontFamily}:${fontWeights.join(
+  ','
+)}&display=swap`;
