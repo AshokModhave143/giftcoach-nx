@@ -40,3 +40,14 @@ Thumbs.db
 
 # Next.js
 .next
+
+# Enviornment variables
+.Enviornment.env.local
+
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
