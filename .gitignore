@@ -42,7 +42,8 @@ Thumbs.db
 .next
 
 # Enviornment variables
-.Enviornment.env.local
+.env
+.env.local
 
 .yarn/*
 !.yarn/cache
