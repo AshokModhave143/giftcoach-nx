@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import {
+  DehydratedState,
   Hydrate,
   QueryClient,
   QueryClientProvider,
@@ -16,9 +17,11 @@ import { ReactQueryDevToolsComponent } from '../components/ReactQueryDevTools';
 
 const clientSideEmotionCache = createEmotionCache();
 
-export interface GiftCoachApp extends AppProps {
+export interface PageProps {
+  dehydratedState: DehydratedState;
+}
+export interface GiftCoachApp extends AppProps<PageProps> {
   emotionCache?: EmotionCache;
-  pageProps: any;
 }
 
 function GiftCoachApp({
@@ -26,6 +29,7 @@ function GiftCoachApp({
   pageProps,
   emotionCache = clientSideEmotionCache,
 }: GiftCoachApp) {
+  const { dehydratedState } = pageProps;
   const [queryClient] = useState(() => new QueryClient());
 
   return (
@@ -37,7 +41,7 @@ function GiftCoachApp({
         <CssBaseline />
         <QueryClientProvider client={queryClient}>
           <ReactQueryDevToolsComponent />
-          <Hydrate state={pageProps.dehydratedState}>
+          <Hydrate state={dehydratedState}>
             <Layout>
               <Component {...pageProps} />
             </Layout>

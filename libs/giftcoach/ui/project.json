@@ -1,0 +1,42 @@
+{
+  "name": "@giftcoach/ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/giftcoach/ui/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "libs/giftcoach/ui/dist",
+        "format": ["cjs", "esm"],
+        "project": "libs/giftcoach/ui/package.json",
+        "entryFile": "libs/giftcoach/ui/src/index.ts",
+        "tsConfig": "libs/giftcoach/ui/tsconfig.lib.json",
+        "assets": [
+          {
+            "glob": "libs/giftcoach/ui/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/giftcoach/ui/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/giftcoach/ui/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["type:ui"]
+}
