@@ -5,7 +5,7 @@ import {
   getStoriesConfigForMonorepoPackages,
 } from './util';
 
-const monorepoPackages = ['@giftcoach/ui'];
+const monorepoPackages = ['@giftcoach/ui', '@giftcoach/feature'];
 
 const stories = getStoriesConfigForMonorepoPackages(monorepoPackages);
 

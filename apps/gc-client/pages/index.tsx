@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material';
+import { Welcome } from '@giftcoach/feature';
 
 export function Index() {
   /*
@@ -8,9 +9,7 @@ export function Index() {
    */
   return (
     <Box>
-      <Typography variant="h4" color="purple">
-        Welcome to Gift Coach 🥰
-      </Typography>
+      <Welcome />
     </Box>
   );
 }

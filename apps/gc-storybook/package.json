@@ -6,6 +6,7 @@
     "build-storybook": "nx run gc-storybook:build"
   },
   "dependencies": {
+    "@giftcoach/feature": "workspace:^",
     "@giftcoach/ui": "workspace:^"
   },
   "devDependencies": {
