@@ -4,7 +4,9 @@ import { AppBar } from './AppBar';
 
 const Story: ComponentMeta<typeof AppBar> = {
   component: AppBar,
-  title: 'AppBar',
+  args: {
+    appName: 'Gift Coach',
+  },
 };
 export default Story;
 

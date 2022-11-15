@@ -13,6 +13,9 @@
         "project": "libs/giftcoach/ui/package.json",
         "entryFile": "libs/giftcoach/ui/src/index.ts",
         "tsConfig": "libs/giftcoach/ui/tsconfig.lib.json",
+        "compiler": "babel",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "assets": [
           {
             "glob": "libs/giftcoach/ui/README.md",
