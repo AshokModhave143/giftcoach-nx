@@ -7781,6 +7781,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:11406d39505c6a2086e0edf1e4a6e1c75b2b98c084d694e40ad3007cf3e1e1ed5b0396270461c2630def00ec2eff49276d17c64f490543e786b82432313904e7#npm:12.3.1"],\
             ["nx", "virtual:c135ea919c150319d0ad9c6511277c1be3c78be677b81d8cbc11f90be53e940bab0630a41912e62ac74c3a90fe5a44ad8bfbe7f7fcccb4927f65ac3f3d2e74c1#npm:15.0.1"],\
             ["react", null],\
+            ["react-intl", "virtual:11406d39505c6a2086e0edf1e4a6e1c75b2b98c084d694e40ad3007cf3e1e1ed5b0396270461c2630def00ec2eff49276d17c64f490543e786b82432313904e7#npm:6.2.1"],\
             ["tslib", "npm:2.4.0"]\
           ],\
           "packagePeers": [\
@@ -7835,6 +7836,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:f60d562acb72685bb1519b5d397855969b98a05c40f6d2a460f67db0d8d19554cdb4c1e0d859af83ede11f616860ca3b3aff2c04104c6e958c16d92f2ab682ff#npm:12.3.1"],\
             ["nx", "virtual:c135ea919c150319d0ad9c6511277c1be3c78be677b81d8cbc11f90be53e940bab0630a41912e62ac74c3a90fe5a44ad8bfbe7f7fcccb4927f65ac3f3d2e74c1#npm:15.0.1"],\
             ["react", "npm:18.2.0"],\
+            ["react-intl", "virtual:f60d562acb72685bb1519b5d397855969b98a05c40f6d2a460f67db0d8d19554cdb4c1e0d859af83ede11f616860ca3b3aff2c04104c6e958c16d92f2ab682ff#npm:6.2.1"],\
             ["tslib", "npm:2.4.0"]\
           ],\
           "packagePeers": [\
@@ -7887,6 +7889,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:4.6.0"],\
             ["next", "virtual:11406d39505c6a2086e0edf1e4a6e1c75b2b98c084d694e40ad3007cf3e1e1ed5b0396270461c2630def00ec2eff49276d17c64f490543e786b82432313904e7#npm:12.3.1"],\
             ["nx", "virtual:c135ea919c150319d0ad9c6511277c1be3c78be677b81d8cbc11f90be53e940bab0630a41912e62ac74c3a90fe5a44ad8bfbe7f7fcccb4927f65ac3f3d2e74c1#npm:15.0.1"],\
+            ["react-intl", "virtual:11406d39505c6a2086e0edf1e4a6e1c75b2b98c084d694e40ad3007cf3e1e1ed5b0396270461c2630def00ec2eff49276d17c64f490543e786b82432313904e7#npm:6.2.1"],\
             ["tslib", "npm:2.4.0"]\
           ],\
           "linkType": "SOFT"\
@@ -33693,6 +33696,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-intl", "npm:6.2.1"]\
           ],\
           "linkType": "SOFT"\
+        }],\
+        ["virtual:11406d39505c6a2086e0edf1e4a6e1c75b2b98c084d694e40ad3007cf3e1e1ed5b0396270461c2630def00ec2eff49276d17c64f490543e786b82432313904e7#npm:6.2.1", {\
+          "packageLocation": "./.yarn/__virtual__/react-intl-virtual-bee913a6d6/0/cache/react-intl-npm-6.2.1-b957b9cd8f-1b87ce7d1a.zip/node_modules/react-intl/",\
+          "packageDependencies": [\
+            ["react-intl", "virtual:11406d39505c6a2086e0edf1e4a6e1c75b2b98c084d694e40ad3007cf3e1e1ed5b0396270461c2630def00ec2eff49276d17c64f490543e786b82432313904e7#npm:6.2.1"],\
+            ["@formatjs/ecma402-abstract", "npm:1.13.0"],\
+            ["@formatjs/icu-messageformat-parser", "npm:2.1.10"],\
+            ["@formatjs/intl", "virtual:facded97e349312e9d62935fa48045c4cf7fce4a2f832c2d55cefea77146a23622278976d540698093945403ce0b0235a8ffb3bce48c0a3412a60d6be78d5aa2#npm:2.5.1"],\
+            ["@formatjs/intl-displaynames", "npm:6.1.4"],\
+            ["@formatjs/intl-listformat", "npm:7.1.3"],\
+            ["@types/hoist-non-react-statics", "npm:3.3.1"],\
+            ["@types/react", "npm:18.0.20"],\
+            ["@types/typescript", null],\
+            ["hoist-non-react-statics", "npm:3.3.2"],\
+            ["intl-messageformat", "npm:10.2.1"],\
+            ["react", null],\
+            ["tslib", "npm:2.4.0"],\
+            ["typescript", null]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "@types/typescript",\
+            "react",\
+            "typescript"\
+          ],\
+          "linkType": "HARD"\
         }],\
         ["virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:6.2.1", {\
           "packageLocation": "./.yarn/__virtual__/react-intl-virtual-a2972ef01c/0/cache/react-intl-npm-6.2.1-b957b9cd8f-1b87ce7d1a.zip/node_modules/react-intl/",\
