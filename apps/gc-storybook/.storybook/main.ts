@@ -5,13 +5,34 @@ import {
   getAliasesForMonorepoPackages,
   getStoriesConfigForMonorepoPackages,
 } from './util';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
+import analyse from 'rollup-plugin-analyzer';
+
+const monorepoPackages = ['@giftcoach/ui', '@giftcoach/feature'];
+
+const stories = getStoriesConfigForMonorepoPackages(monorepoPackages);
+
+const devMode = process.env.NODE_ENV === 'development';
+
+function terserConfig() {
+  return terser({
+    ecma: 2020,
+    mangle: { toplevel: true },
+    compress: {
+      module: true,
+      toplevel: true,
+      unsafe_arrows: true,
+      drop_console: !devMode,
+      drop_debugger: !devMode,
+    },
+    output: { quote_style: 1 },
+  });
+}
 
 type StorybookConfig = StorybookBaseConfig & {
   viteFinal?: ViteFinal;
 };
-const monorepoPackages = ['@giftcoach/ui', '@giftcoach/feature'];
-
-const stories = getStoriesConfigForMonorepoPackages(monorepoPackages);
 
 const storybookConfig: StorybookConfig = {
   core: { builder: '@storybook/builder-vite', disableTelemetry: true },
@@ -29,11 +50,12 @@ const storybookConfig: StorybookConfig = {
     storyStoreV7: true,
     buildStoriesJson: true,
   },
+  framework: '@storybook/react',
   viteFinal: async (config: UserConfig, { configType }) => {
     const extendedConfig: UserConfig = {
       define: {
         'process.env': process.env,
-        global: 'window',
+        // global: 'Window',
       },
       resolve: {
         alias: {
@@ -47,6 +69,25 @@ const storybookConfig: StorybookConfig = {
       },
       build: {
         sourcemap: configType === 'DEVELOPMENT',
+
+        rollupOptions: {
+          external: ['react', 'react-dom', 'window'],
+          output: {
+            globals: {
+              react: 'React',
+              window: 'window',
+            },
+            sourcemap: devMode ? 'inline' : false,
+            plugins: [terserConfig()],
+          },
+          treeshake: {
+            moduleSideEffects: false,
+          },
+          plugins: [
+            nodeResolve(),
+            analyse({ summaryOnly: true, filterSummary: true }),
+          ],
+        },
       },
     };
 
