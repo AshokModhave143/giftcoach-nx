@@ -93,7 +93,7 @@ const TitleComponent: React.FC<{ appName: string }> = ({ appName }) => {
       id="giftcoach.title"
       defaultMessage="{primary}<strong>{secondary}</strong>"
       values={{
-        strong: (value: string) => <strong>{value}</strong>,
+        strong: (value) => <strong>{value}</strong>,
         primary,
         secondary,
       }}

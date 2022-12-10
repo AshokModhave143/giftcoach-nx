@@ -13,6 +13,7 @@ import Head from 'next/head';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from '../theme/theme';
 import React, { useState } from 'react';
+import { IntlProvider } from 'react-intl';
 import { ReactQueryDevToolsComponent } from '../components/ReactQueryDevTools';
 
 const clientSideEmotionCache = createEmotionCache();
@@ -42,9 +43,11 @@ function GiftCoachApp({
         <QueryClientProvider client={queryClient}>
           <ReactQueryDevToolsComponent />
           <Hydrate state={dehydratedState}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <IntlProvider locale="en">
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </IntlProvider>
           </Hydrate>
         </QueryClientProvider>
       </ThemeProvider>
