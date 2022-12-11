@@ -40,6 +40,11 @@ export const museums: MuseumData[] = [
     name: 'Museum National History',
     position: { lat: 48.206734688772926, lng: 16.359912051473867 },
   },
+  {
+    name: 'Hamilton',
+    position: { lat: -37.7776646, lng: 175.1783506 },
+  },
+  { name: 'Argentina', position: { lat: -36.857102, lng: -66.038596 } },
 ];
 
 export const center: google.maps.LatLngLiteral = {
@@ -47,4 +52,4 @@ export const center: google.maps.LatLngLiteral = {
   lng: 10.56472,
 };
 
-export const zoom = 5;
+export const zoom = 17;

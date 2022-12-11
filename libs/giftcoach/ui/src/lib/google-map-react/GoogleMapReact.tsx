@@ -62,7 +62,11 @@ export const GoogleMapReact = ({
         mapOptions={mapOptions}
       >
         <React.StrictMode>
-          <MapContainer {...{ onChange, onIdle, onClick }} mapRef={mapRef}>
+          <MapContainer
+            {...{ onChange, onIdle, onClick }}
+            mapRef={mapRef}
+            filteredMarkers={filteredMarkers}
+          >
             {filteredMarkers &&
               filteredMarkers.map((marker: MuseumData) => (
                 <CustomMarker

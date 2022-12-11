@@ -20,18 +20,22 @@ export const MapFeature: React.FC<MapFeatureProps> = ({
     if (map) {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       setZoomLevel(map.getZoom()!);
-
       const nextCenter = map.getCenter();
       console.log(nextCenter);
-
       if (nextCenter) setMapCenter(nextCenter.toJSON());
     }
+  };
+
+  const onClick = (e: google.maps.MapMouseEvent) => {
+    console.log(e);
+    alert('Clicked me');
   };
 
   return (
     <GoogleMapReact
       apiKey=""
       onIdle={onIdle}
+      onClick={onClick}
       center={mapCenter}
       zoom={zoomLevel}
       markers={museums}

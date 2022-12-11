@@ -5,6 +5,7 @@ import React, {
   PropsWithChildren,
   useEffect,
 } from 'react';
+import { MuseumData } from '../../data';
 import { setMapWindowStyle } from '../../utils/mapWindowUtils';
 import { MapCanvas } from '../map-canvas/MapCanvas';
 
@@ -13,6 +14,7 @@ export interface MapContainerProps extends PropsWithChildren {
   onIdle?: (map: google.maps.Map) => void;
   onChange?: () => void; // TODO: add params
   mapRef: (node: React.SetStateAction<HTMLDivElement | null>) => void;
+  filteredMarkers: MuseumData[] | undefined;
 }
 
 export const MapContainer: React.FC<MapContainerProps> = ({
@@ -21,6 +23,7 @@ export const MapContainer: React.FC<MapContainerProps> = ({
   onChange,
   onIdle,
   mapRef,
+  filteredMarkers,
 }) => {
   const map = useGoogleMap();
 
@@ -41,6 +44,23 @@ export const MapContainer: React.FC<MapContainerProps> = ({
       if (onChange) map.addListener('bounds_changed', onChange);
     }
   }, [map, onClick, onIdle, onChange]);
+
+  // Adjust zoom
+  useEffect(() => {
+    console.log('HOOK FOR BOUNDS=', map);
+    if (map) {
+      const bounds = new google.maps.LatLngBounds();
+
+      console.log('ORIGINAL BOUNDS=', bounds);
+
+      filteredMarkers?.forEach(({ position }) => {
+        bounds?.extend(new google.maps.LatLng(position.lat, position.lng));
+      });
+
+      map.fitBounds(bounds);
+      console.log('ENTENDED BOUNDS=', bounds);
+    }
+  }, [map, filteredMarkers]);
 
   return (
     <div id="container">
