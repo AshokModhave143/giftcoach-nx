@@ -52,4 +52,4 @@ export const center: google.maps.LatLngLiteral = {
   lng: 10.56472,
 };
 
-export const zoom = 17;
+export const zoom = 5;
