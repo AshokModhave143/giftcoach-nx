@@ -1,34 +1,36 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { PropsWithChildren, useCallback, useState } from 'react';
 import { Box } from '@mui/material';
 import { GoogleMapsProvider } from '@ubilabs/google-maps-react-hooks';
-import { MapContainer, CustomMarker } from './components';
-import { MuseumData } from './data';
+import { MapContainer, MapContainerProps } from './components';
 import { MAP_SETTINGS } from './MapSettings';
 
-export interface GoogleMapReactProps {
-  onChange?: () => void;
-  onClick?: (e: google.maps.MapMouseEvent) => void;
-  onIdle?: (map: google.maps.Map) => void;
-  onMarkerClick?: (payload: MuseumData) => void;
-  markers?: MuseumData[];
-  center: google.maps.LatLngLiteral;
-  zoom: number;
+export interface GoogleMapReactProps extends PropsWithChildren {
   apiKey: string;
-  highlightedMarketId?: string;
+  onChange?: MapContainerProps['onChange'];
+  onClick?: MapContainerProps['onClick'];
+  onZoomChange?: MapContainerProps['onZoomChange'];
+  onDragStart?: MapContainerProps['onDragStart'];
+  onMapLoad?: (map: google.maps.Map) => void;
+  center: google.maps.LatLngLiteral;
+  zoom?: number;
+  bounds?: google.maps.LatLngBoundsLiteral;
+  children: React.ReactNode;
 }
 
 export const GoogleMapReact = ({
+  apiKey,
   onChange,
   onClick,
-  onIdle,
-  onMarkerClick,
-  markers,
+  onZoomChange,
+  onDragStart,
+  onMapLoad,
   center,
   zoom,
-  apiKey,
-  highlightedMarketId,
+  bounds,
+  children,
 }: GoogleMapReactProps) => {
   const [mapContainer, setMapContainer] = useState<HTMLDivElement | null>(null);
+  const [map, setMap] = useState<google.maps.Map | undefined>();
 
   const mapRef = useCallback(
     (node: React.SetStateAction<HTMLDivElement | null>) => {
@@ -37,22 +39,35 @@ export const GoogleMapReact = ({
     []
   );
 
-  const filteredMarkers = useMemo(() => {
-    return markers?.filter((m) => m.position.lat && m.position.lng);
-  }, [markers]);
+  const handleMapLoaded = useCallback(
+    (map: google.maps.Map) => {
+      setMap(map);
+
+      if (bounds) {
+        map.fitBounds(bounds);
+      }
+      onMapLoad?.(map);
+    },
+    [onMapLoad, bounds]
+  );
 
   const mapOptions: google.maps.MapOptions = {
+    mapId: 'map-view',
     center,
-    zoom,
+    zoom: zoom ?? MAP_SETTINGS.DEFAULT_ZOOM,
     ...MAP_SETTINGS.MAP_DEFAULT_OPTIONS,
   };
 
   return (
     <Box
       sx={{
+        display: 'block',
         position: 'absolute',
-        height: '100vh',
-        width: '100%',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        overflow: 'hidden',
         backgroundColor: 'lightblue',
       }}
     >
@@ -60,21 +75,14 @@ export const GoogleMapReact = ({
         googleMapsAPIKey={process.env['NEXT_PUBLIC_GOOGLE_MAP_KEY'] ?? apiKey}
         mapContainer={mapContainer}
         mapOptions={mapOptions}
+        onLoadMap={handleMapLoaded}
+        libraries={['places', 'marker']}
       >
         <React.StrictMode>
           <MapContainer
-            {...{ onChange, onIdle, onClick }}
-            mapRef={mapRef}
-            filteredMarkers={filteredMarkers}
+            {...{ onChange, onClick, onDragStart, onZoomChange, mapRef }}
           >
-            {filteredMarkers &&
-              filteredMarkers.map((marker: MuseumData) => (
-                <CustomMarker
-                  key={marker.name}
-                  position={marker.position}
-                  onClick={() => onMarkerClick && onMarkerClick(marker)}
-                />
-              ))}
+            {map && children}
           </MapContainer>
         </React.StrictMode>
       </GoogleMapsProvider>
@@ -83,3 +91,5 @@ export const GoogleMapReact = ({
 };
 
 export * from './data';
+export * from './components/custom-marker/CustomMarker';
+export * from './MapSettings';

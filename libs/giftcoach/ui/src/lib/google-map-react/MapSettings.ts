@@ -4,7 +4,19 @@ export const MAP_SETTINGS = {
     streetViewControl: false,
     mapTypeControl: false,
     zoomControl: true,
-    clickableIcons: true,
+    clickableIcons: false,
+    scrollwheel: true,
+    minZoom: 3,
+    tilt: 0,
+    draggable: true,
   } as google.maps.MapOptions,
-  ZOOM_DEFAULT: 11,
+  DEFAULT_ZOOM: 11,
+  MARKER_SIZE: 35,
+  PIXEL_OFFSET: {
+    MARKER: {
+      X: 0,
+      Y: -35,
+    },
+  },
+  DIRECTIONS_OPTIONS: { suppressMarkers: true, preserveViewport: true },
 };

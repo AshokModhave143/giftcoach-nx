@@ -1,4 +1,5 @@
-import { GoogleMapReact, MuseumData } from '@giftcoach/ui';
+import { GoogleMapReact, GoogleMapReactProps, MuseumData } from '@giftcoach/ui';
+import { CustomMarker } from '@giftcoach/ui';
 import { useState } from 'react';
 
 /* eslint-disable-next-line */
@@ -8,6 +9,7 @@ export interface MapFeatureProps {
   museums: MuseumData[];
 }
 
+const googleMapKey = process.env['NEXT_PUBLIC_GOOGLE_MAP_KEY'] ?? '';
 export const MapFeature: React.FC<MapFeatureProps> = ({
   center,
   zoom,
@@ -16,29 +18,34 @@ export const MapFeature: React.FC<MapFeatureProps> = ({
   const [zoomLevel, setZoomLevel] = useState<number>(zoom);
   const [mapCenter, setMapCenter] = useState<google.maps.LatLngLiteral>(center);
 
-  const onIdle = (map: google.maps.Map) => {
-    if (map) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      setZoomLevel(map.getZoom()!);
-      const nextCenter = map.getCenter();
-      console.log(nextCenter);
-      if (nextCenter) setMapCenter(nextCenter.toJSON());
-    }
+  const handleOnMapChange: GoogleMapReactProps['onChange'] = (bBox) => {
+    const mapViewBoundingBox = {
+      neLatitude: bBox.getNorthEast().lat(),
+      neLongitude: bBox.getNorthEast().lng(),
+      swLatitude: bBox.getSouthWest().lat(),
+      swLongitude: bBox.getSouthWest().lng(),
+    };
+    console.log('mapViewBoundingBox', mapViewBoundingBox);
   };
 
-  const onClick = (e: google.maps.MapMouseEvent) => {
+  const onClick = (
+    e: google.maps.MapMouseEvent | google.maps.IconMouseEvent
+  ) => {
     console.log(e);
     alert('Clicked me');
   };
 
   return (
     <GoogleMapReact
-      apiKey=""
-      onIdle={onIdle}
+      apiKey={googleMapKey}
       onClick={onClick}
       center={mapCenter}
       zoom={zoomLevel}
-      markers={museums}
-    />
+      onChange={handleOnMapChange}
+    >
+      {museums.slice(0, 2).map((marker: MuseumData) => (
+        <CustomMarker key={marker.name} position={marker.position} />
+      ))}
+    </GoogleMapReact>
   );
 };

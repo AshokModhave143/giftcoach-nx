@@ -1,31 +1,42 @@
+import { Box } from '@mui/material';
 import { useGoogleMap } from '@ubilabs/google-maps-react-hooks';
-import React, {
-  cloneElement,
-  isValidElement,
-  PropsWithChildren,
-  useEffect,
-} from 'react';
-import { MuseumData } from '../../data';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
+import { MAP_SETTINGS } from '../../MapSettings';
 import { setMapWindowStyle } from '../../utils/mapWindowUtils';
-import { MapCanvas } from '../map-canvas/MapCanvas';
+import { MapCanvas, StyledDivCanvas } from '../map-canvas/MapCanvas';
+import { MapMarkers } from '../map-markers/MapMarkers';
 
 export interface MapContainerProps extends PropsWithChildren {
   onClick?: (e: google.maps.MapMouseEvent) => void;
-  onIdle?: (map: google.maps.Map) => void;
-  onChange?: () => void; // TODO: add params
+  onChange?: (bBox: google.maps.LatLngBounds) => void;
+  onZoomChange?: (zoomType: ZOOM_TYPE) => void;
+  onDragStart?: () => void;
   mapRef: (node: React.SetStateAction<HTMLDivElement | null>) => void;
-  filteredMarkers: MuseumData[] | undefined;
 }
+
+const MAP_CHANGE_DEBOUNCE_TIME = 250;
+type ZOOM_TYPE = 'in' | 'out';
+
+const MAP_EVENTS: string[] = [
+  'bounds_changed',
+  'center_cahnged',
+  'zoom_changed',
+  'click',
+  'dragstart',
+  'dragend',
+  'idle',
+];
 
 export const MapContainer: React.FC<MapContainerProps> = ({
   children,
   onClick,
   onChange,
-  onIdle,
+  onZoomChange,
+  onDragStart,
   mapRef,
-  filteredMarkers,
 }) => {
   const map = useGoogleMap();
+  const [zoom, setZoom] = useState<number>(MAP_SETTINGS.DEFAULT_ZOOM);
 
   useEffect(() => {
     setMapWindowStyle(document);
@@ -33,44 +44,71 @@ export const MapContainer: React.FC<MapContainerProps> = ({
 
   useEffect(() => {
     if (map) {
-      ['click', 'idle'].forEach((eventName) =>
-        google.maps.event.clearListeners(map, eventName)
+      let ignoreCenterChanged = false;
+
+      const handleOnChangeCallback = () => {
+        setTimeout(() => {
+          if (!ignoreCenterChanged) {
+            const bBox = map.getBounds();
+            if (bBox && onChange) onChange(bBox);
+          }
+          ignoreCenterChanged = true;
+        }, MAP_CHANGE_DEBOUNCE_TIME);
+      };
+
+      const handleOtherMapEvents = (
+        event: string,
+        isCenterChanged: boolean
+      ) => {
+        ignoreCenterChanged = isCenterChanged;
+      };
+
+      const listeners: Array<google.maps.MapsEventListener> = MAP_EVENTS.map(
+        (eventName) => {
+          switch (eventName) {
+            case 'click':
+              return map.addListener(
+                eventName,
+                (e: google.maps.MapMouseEvent | google.maps.IconMouseEvent) =>
+                  onClick?.(e)
+              );
+
+            case 'dragstart':
+              return map.addListener(eventName, () => {
+                handleOtherMapEvents(eventName, true);
+                onDragStart?.();
+              });
+
+            case 'zoom_changed':
+              return map.addListener(eventName, () => {
+                const newZoom = map.getZoom();
+
+                newZoom && setZoom(newZoom);
+                onZoomChange?.(zoom < Number(newZoom) ? 'in' : 'out');
+              });
+
+            case 'idle':
+              return map.addListener(eventName, handleOnChangeCallback);
+
+            default:
+              return map.addListener(eventName, () =>
+                handleOtherMapEvents(eventName, false)
+              );
+          }
+        }
       );
 
-      if (onClick) map.addListener('click', onClick);
-
-      if (onIdle) map.addListener('idle', onIdle);
-
-      if (onChange) map.addListener('bounds_changed', onChange);
+      return () => {
+        listeners.length && google?.maps?.event.clearInstanceListeners(map);
+      };
     }
-  }, [map, onClick, onIdle, onChange]);
-
-  // Adjust zoom
-  useEffect(() => {
-    console.log('HOOK FOR BOUNDS=', map);
-    if (map) {
-      const bounds = new google.maps.LatLngBounds();
-
-      console.log('ORIGINAL BOUNDS=', bounds);
-
-      filteredMarkers?.forEach(({ position }) => {
-        bounds?.extend(new google.maps.LatLng(position.lat, position.lng));
-      });
-
-      map.fitBounds(bounds);
-      console.log('ENTENDED BOUNDS=', bounds);
-    }
-  }, [map, filteredMarkers]);
+    return;
+  }, [map]);
 
   return (
-    <div id="container">
+    <StyledDivCanvas id="map-container">
       <MapCanvas ref={mapRef} />
-      {React.Children.map(children, (child) => {
-        if (isValidElement(child)) {
-          return cloneElement(child as React.ReactElement<any>, { map });
-        }
-        return null;
-      })}
-    </div>
+      <MapMarkers>{children}</MapMarkers>
+    </StyledDivCanvas>
   );
 };
