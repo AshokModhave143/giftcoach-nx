@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "declarationMap": true,
     "paths": {
+      "@giftcoach/data-access": ["libs/giftcoach/data-access/src/index.ts"],
       "@giftcoach/feature": ["libs/giftcoach/feature/src/index.ts"],
       "@giftcoach/ui": ["libs/giftcoach/ui/src/index.ts"]
     }

@@ -2,101 +2,65 @@ import React from 'react';
 import {
   AppBar as MuiAppBar,
   AppBarProps as MuiAppBarProps,
-  Box,
-  Button,
-  IconButton,
   Toolbar,
-  Typography,
+  useTheme,
 } from '@mui/material';
-import { CardGiftcard } from '@mui/icons-material';
-import { FormattedMessage } from 'react-intl';
+import { AppLogoWithTitle } from './AppLogoWithTitle';
+import { AppMenu } from './AppMenu';
+import { UnAuthActionMenu } from './UnAuthActionMenu';
 
 export interface AppBarProps extends MuiAppBarProps {
   appName: string;
+  onLogoClick?: () => void;
+  onLoginClick?: () => void;
+  onSignUpClick?: () => void;
 }
 
 const pages = ['Products', 'Pricing', 'Blog'];
 
 export const AppBar: React.FC<AppBarProps> = ({
   appName,
+  onLoginClick,
+  onSignUpClick,
+  onLogoClick,
   ...props
 }: AppBarProps) => {
+  const theme = useTheme();
+
   return (
     <MuiAppBar
       sx={{
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        height: 105,
-        backgroundColor: 'white',
+        paddingX: theme.spacing(2),
+        height: theme.spacing(12),
+        backgroundColor: theme.palette.background.paper,
+
+        overflowY: 'auto',
       }}
       position="static"
       {...props}
     >
-      <Toolbar disableGutters>
+      <Toolbar
+        disableGutters
+        sx={{
+          flexWrap: 'wrap',
+          width: '100%',
+          justifyContent: 'space-between',
+        }}
+      >
         {/* Left */}
-        <Box
-          display="inline-flex"
-          alignItems="center"
-          gap={1}
-          justifyContent="flex-start"
-        >
-          <IconButton>
-            <CardGiftcard fontSize="large" sx={{ fill: 'red' }} />
-          </IconButton>
+        <AppLogoWithTitle appName={appName} onLogoClick={onLogoClick} />
 
-          <Typography variant="h4" color="black" letterSpacing={2}>
-            <TitleComponent appName={appName} />
-          </Typography>
-        </Box>
-
-        {/* Middle menu */}
-        <Box
-          sx={{
-            flexGrow: 1,
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          {pages.map((page) => (
-            <Button
-              key={page}
-              sx={{ my: 2, display: 'block', ':active': { fontWeight: 700 } }}
-            >
-              {page}
-            </Button>
-          ))}
-        </Box>
+        {/* Menu */}
+        <AppMenu menus={pages} />
 
         {/* Right button */}
-        <Box
-          sx={{ display: 'flex', justifyContent: 'center' }}
-          justifyContent="flex-end"
-        >
-          <Button
-            variant="outlined"
-            key="sign-up"
-            sx={{ borderColor: 'red', borderWidth: 1, color: 'black' }}
-          >
-            SIGN UP FREE
-          </Button>
-        </Box>
+        <UnAuthActionMenu
+          {...{ onLogin: onLoginClick, onSignUp: onSignUpClick }}
+        />
       </Toolbar>
     </MuiAppBar>
-  );
-};
-
-const TitleComponent: React.FC<{ appName: string }> = ({ appName }) => {
-  const [primary, secondary] = appName.split(' ');
-  return (
-    <FormattedMessage
-      id="giftcoach.title"
-      defaultMessage="{primary}<strong>{secondary}</strong>"
-      values={{
-        strong: (value) => <strong>{value}</strong>,
-        primary,
-        secondary,
-      }}
-    />
   );
 };

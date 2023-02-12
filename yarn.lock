@@ -2534,6 +2534,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@formatjs/cli@npm:^5.1.12":
+  version: 5.1.12
+  resolution: "@formatjs/cli@npm:5.1.12"
+  peerDependencies:
+    "@vue/compiler-sfc": ^3.2.34
+  peerDependenciesMeta:
+    "@vue/compiler-sfc":
+      optional: true
+  bin:
+    formatjs: bin/formatjs
+  checksum: a76c5995078aebc750b58ae049dae0118e265054e4b9c004e45efcf42086138267fa7ab35a5161f027a5c79eef1ea8e5897073a70dfa1dd93b99023a73c280f9
+  languageName: node
+  linkType: hard
+
 "@formatjs/ecma402-abstract@npm:1.13.0":
   version: 1.13.0
   resolution: "@formatjs/ecma402-abstract@npm:1.13.0"
@@ -2632,6 +2646,52 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@giftcoach/data-access@workspace:libs/giftcoach/data-access":
+  version: 0.0.0-use.local
+  resolution: "@giftcoach/data-access@workspace:libs/giftcoach/data-access"
+  dependencies:
+    "@babel/core": ^7.19.6
+    "@mui/icons-material": ^5.10.9
+    "@mui/material": ^5.10.11
+    "@nrwl/cli": 15.0.1
+    "@nrwl/cypress": 15.0.1
+    "@nrwl/eslint-plugin-nx": 15.0.1
+    "@nrwl/jest": 15.0.1
+    "@nrwl/js": 15.0.1
+    "@nrwl/linter": 15.0.1
+    "@nrwl/nx-cloud": latest
+    "@nrwl/react": 15.0.1
+    "@nrwl/web": 15.0.1
+    "@nrwl/workspace": 15.0.1
+    "@storybook/react": ^6.5.13
+    "@storybook/testing-library": ^0.0.13
+    "@testing-library/react": 13.4.0
+    "@types/babel__core": ^7
+    "@types/jest": 28.1.1
+    "@types/node": 18.7.18
+    "@types/react": 18.0.20
+    "@types/react-dom": 18.0.6
+    "@types/react-is": 17.0.3
+    "@types/styled-components": 5.1.26
+    "@typescript-eslint/eslint-plugin": ^5.36.1
+    "@typescript-eslint/parser": ^5.36.1
+    core-js: ^3.6.5
+    eslint: ~8.15.0
+    eslint-config-next: 12.3.1
+    eslint-config-prettier: 8.1.0
+    eslint-plugin-cypress: ^2.10.3
+    eslint-plugin-import: 2.26.0
+    eslint-plugin-jsx-a11y: 6.6.1
+    eslint-plugin-react: 7.31.8
+    eslint-plugin-react-hooks: 4.6.0
+    nx: 15.0.1
+    tslib: ^2.3.0
+  peerDependencies:
+    next: 12.3.1
+    react: 18.2.0
+  languageName: unknown
+  linkType: soft
+
 "@giftcoach/feature@workspace:^, @giftcoach/feature@workspace:libs/giftcoach/feature":
   version: 0.0.0-use.local
   resolution: "@giftcoach/feature@workspace:libs/giftcoach/feature"
@@ -2685,6 +2745,7 @@ __metadata:
   resolution: "@giftcoach/ui@workspace:libs/giftcoach/ui"
   dependencies:
     "@babel/core": ^7.19.6
+    "@formatjs/cli": ^5.1.12
     "@googlemaps/jest-mocks": ^2.7.5
     "@mui/icons-material": ^5.10.9
     "@mui/material": ^5.10.11
@@ -6511,6 +6572,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:18.7.1":
+  version: 18.7.1
+  resolution: "@types/node@npm:18.7.1"
+  checksum: f1e2b701b107f97be01da4c46845cd23bcdcb2865f9abbb2847546d09587e726ea207daca6f0d1e72196875ef8c62feeeff5f1c1f2070445acd6d1a61d815c7c
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:18.7.18":
   version: 18.7.18
   resolution: "@types/node@npm:18.7.18"
@@ -6529,13 +6597,6 @@ __metadata:
   version: 14.18.32
   resolution: "@types/node@npm:14.18.32"
   checksum: 45463114bf85d06dc12925d876dd90b7fff43d9ee10a40e48fd16aece3d0201c76426c128e41230b2818d386422be06c5be33b3d94d90ee924b6fa4d54574035
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^18.11.9":
-  version: 18.11.9
-  resolution: "@types/node@npm:18.11.9"
-  checksum: cc0aae109e9b7adefc32eecb838d6fad931663bb06484b5e9cbbbf74865c721b03d16fd8d74ad90e31dbe093d956a7c2c306ba5429ba0c00f3f7505103d7a496
   languageName: node
   linkType: hard
 
@@ -13535,6 +13596,7 @@ __metadata:
     "@emotion/server": ^11.10.0
     "@emotion/styled": ^11.10.5
     "@fontsource/roboto": ^4.5.8
+    "@formatjs/cli": ^5.1.12
     "@googlemaps/jest-mocks": ^2.7.5
     "@mui/icons-material": ^5.10.9
     "@mui/material": ^5.10.11
@@ -13547,6 +13609,7 @@ __metadata:
     "@nrwl/next": 15.0.1
     "@nrwl/nx-cloud": 15.0.1
     "@nrwl/react": 15.0.1
+    "@nrwl/rollup": 15.0.1
     "@nrwl/storybook": 15.0.1
     "@nrwl/web": 15.0.1
     "@nrwl/workspace": 15.0.1
@@ -13579,7 +13642,7 @@ __metadata:
     "@testing-library/react": ^13.4.0
     "@types/google.maps": ^3.51.0
     "@types/jest": ^29.2.2
-    "@types/node": ^18.11.9
+    "@types/node": 18.7.1
     "@types/react": ^18.0.25
     "@types/react-dom": ^18.0.8
     "@types/react-is": 17.0.3

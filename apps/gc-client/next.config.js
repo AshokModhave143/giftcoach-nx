@@ -12,6 +12,10 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  i18n: {
+    locales: ['en-GB', 'en-US'],
+    defaultLocale: 'en-GB',
+  },
   images: {
     domains: ['images.pexels.com'],
   },

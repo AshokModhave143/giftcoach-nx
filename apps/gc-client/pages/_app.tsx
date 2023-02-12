@@ -15,6 +15,8 @@ import theme from '../theme/theme';
 import React, { useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { ReactQueryDevToolsComponent } from '../components/ReactQueryDevTools';
+import { useRouter } from 'next/router';
+import { defaultLocale as intlDefaultLocale, messages } from '@giftcoach/ui';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -31,7 +33,9 @@ function GiftCoachApp({
   emotionCache = clientSideEmotionCache,
 }: GiftCoachApp) {
   const { dehydratedState } = pageProps;
+  const { locale = intlDefaultLocale, defaultLocale } = useRouter();
   const [queryClient] = useState(() => new QueryClient());
+  const localMessages = messages[locale];
 
   return (
     <CacheProvider value={emotionCache}>
@@ -43,7 +47,11 @@ function GiftCoachApp({
         <QueryClientProvider client={queryClient}>
           <ReactQueryDevToolsComponent />
           <Hydrate state={dehydratedState}>
-            <IntlProvider locale="en">
+            <IntlProvider
+              locale={locale}
+              defaultLocale={defaultLocale}
+              messages={localMessages}
+            >
               <Layout>
                 <Component {...pageProps} />
               </Layout>
