@@ -1,8 +1,9 @@
 {
-  "name": "giftcoach-data-access",
+  "name": "@giftcoach/data-access",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/giftcoach/data-access/src",
   "projectType": "library",
+  "tags": ["type:data-access"],
   "targets": {
     "build": {
       "executor": "@nrwl/rollup:rollup",
@@ -11,6 +12,12 @@
         "outputPath": "libs/giftcoach/data-access/dist",
         "main": "libs/giftcoach/data-access/src/index.ts",
         "tsConfig": "libs/giftcoach/data-access/tsconfig.lib.json",
+        "project": "libs/giftcoach/data-access/package.json",
+        "entryFile": "libs/giftcoach/data-access/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "format": ["cjs", "esm"],
         "assets": []
       }
     },
@@ -29,6 +36,5 @@
         "passWithNoTests": true
       }
     }
-  },
-  "tags": []
+  }
 }

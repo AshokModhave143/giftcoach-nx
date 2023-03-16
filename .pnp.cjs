@@ -112,6 +112,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:5.40.1"],\
             ["@ubilabs/google-maps-react-hooks", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:2.0.2"],\
             ["@yarnpkg/sdks", "npm:3.0.0-rc.27"],\
+            ["axios", "npm:1.3.4"],\
             ["babel-jest", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:29.3.1"],\
             ["babel-loader", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:9.1.0"],\
             ["babel-plugin-styled-components", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:1.10.7"],\
@@ -7698,6 +7699,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/styled-components", "npm:5.1.26"],\
             ["@typescript-eslint/eslint-plugin", "virtual:f60d562acb72685bb1519b5d397855969b98a05c40f6d2a460f67db0d8d19554cdb4c1e0d859af83ede11f616860ca3b3aff2c04104c6e958c16d92f2ab682ff#npm:5.40.1"],\
             ["@typescript-eslint/parser", "virtual:f60d562acb72685bb1519b5d397855969b98a05c40f6d2a460f67db0d8d19554cdb4c1e0d859af83ede11f616860ca3b3aff2c04104c6e958c16d92f2ab682ff#npm:5.40.1"],\
+            ["axios", "npm:1.3.4"],\
             ["core-js", "npm:3.25.5"],\
             ["eslint", "npm:8.15.0"],\
             ["eslint-config-next", "virtual:f60d562acb72685bb1519b5d397855969b98a05c40f6d2a460f67db0d8d19554cdb4c1e0d859af83ede11f616860ca3b3aff2c04104c6e958c16d92f2ab682ff#npm:12.3.1"],\
@@ -19440,6 +19442,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["proxy-from-env", "npm:1.1.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:1.3.4", {\
+          "packageLocation": "./.yarn/cache/axios-npm-1.3.4-01ea685178-7440edefcf.zip/node_modules/axios/",\
+          "packageDependencies": [\
+            ["axios", "npm:1.3.4"],\
+            ["follow-redirects", "virtual:4b63965ac1b2157b91a1875529bea3b0bbc3068d3676d1bef28bff5cf6689705374a86cc3832f95ba8d934037a93cc0e09c3662c13ca0e747800d7ca279a53c0#npm:1.15.2"],\
+            ["form-data", "npm:4.0.0"],\
+            ["proxy-from-env", "npm:1.1.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["axobject-query", [\
@@ -26148,6 +26160,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:5.40.1"],\
             ["@ubilabs/google-maps-react-hooks", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:2.0.2"],\
             ["@yarnpkg/sdks", "npm:3.0.0-rc.27"],\
+            ["axios", "npm:1.3.4"],\
             ["babel-jest", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:29.3.1"],\
             ["babel-loader", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:9.1.0"],\
             ["babel-plugin-styled-components", "virtual:b7641d1bcc095961bff632dba320b321bc5b281e8531c174802fdfaf339beda3a95de7c93cbd20dc644835698a1262d2be4e446b4271dff49e82a873d6898900#npm:1.10.7"],\
